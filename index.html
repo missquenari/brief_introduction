@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, initial-scale=1">
+<title>Ellah Jane Mortel — Creative Technologist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0f1e;
+  --s1:#111827;
+  --s2:#1a2236;
+  --s3:#1e293b;
+  --purple:#8b5cf6;
+  --purple-dim:rgba(139,92,246,0.15);
+  --cyan:#06b6d4;
+  --cyan-dim:rgba(6,182,212,0.12);
+  --pink:#ec4899;
+  --white:#f1f5f9;
+  --muted:#64748b;
+  --muted2:#94a3b8;
+  --border:rgba(139,92,246,0.18);
+  --border2:rgba(6,182,212,0.18);
+}
+html,body{
+  width:100vw;height:100vh;
+  background:var(--bg);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  overflow:hidden;
+}
+
+/* ── LAYOUT: 3-column grid ── */
+.screen{
+  width:100vw;height:100vh;
+  display:grid;
+  grid-template-columns:260px 1fr 1fr;
+  grid-template-rows:1fr;
+  gap:0;
+}
+
+/* ── LEFT PANEL ── */
+.left{
+  background:var(--s1);
+  border-right:1px solid var(--border);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:2.2rem 1.4rem;
+  gap:1.4rem;
+}
+.avatar-wrap{
+  width:110px;height:110px;
+  border-radius:50%;
+  padding:2.5px;
+  background:conic-gradient(var(--purple),var(--cyan),var(--pink),var(--purple));
+  animation:spin 6s linear infinite;
+  flex-shrink:0;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.avatar-inner{
+  width:100%;height:100%;
+  border-radius:50%;
+  background:var(--s1);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:2rem;color:var(--cyan);
+}
+.name{
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;font-weight:700;
+  text-align:center;line-height:1.2;
+  background:linear-gradient(135deg,var(--white),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.roles{
+  font-size:.68rem;color:var(--muted2);
+  letter-spacing:.1em;text-align:center;line-height:2;
+}
+.roles span{color:var(--purple)}
+
+.divider-h{width:100%;height:1px;background:var(--border)}
+
+.facts{width:100%;display:flex;flex-direction:column;gap:.5rem}
+.fact{display:flex;align-items:center;gap:.6rem}
+.fact-icon{font-size:1rem;width:1.1rem;text-align:center;flex-shrink:0}
+.fact-text{font-size:.72rem;color:var(--muted2);line-height:1.3}
+.fact-text strong{display:block;color:var(--white);font-size:.75rem}
+
+.tagline-box{
+  background:var(--purple-dim);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:.8rem 1rem;
+  width:100%;
+}
+.tagline-box p{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:.8rem;color:var(--muted2);
+  line-height:1.6;text-align:center;
+}
+
+/* ── MIDDLE PANEL ── */
+.mid{
+  background:var(--bg);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  padding:1.8rem 1.6rem;
+  gap:1.4rem;
+  overflow:hidden;
+}
+
+/* ── RIGHT PANEL ── */
+.right{
+  background:var(--bg);
+  display:flex;flex-direction:column;
+  padding:1.8rem 1.6rem;
+  gap:1.4rem;
+  overflow:hidden;
+}
+
+/* ── SECTION LABEL ── */
+.sec{
+  font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--purple);
+  display:flex;align-items:center;gap:.5rem;
+  flex-shrink:0;
+}
+.sec::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── JOURNEY TIMELINE ── */
+.timeline{
+  display:flex;flex-direction:column;gap:.45rem;
+  position:relative;padding-left:1.2rem;
+  flex:1;justify-content:space-between;
+}
+.timeline::before{
+  content:'';position:absolute;left:.35rem;top:.3rem;bottom:.3rem;
+  width:1px;
+  background:linear-gradient(to bottom,var(--purple),var(--cyan),var(--pink));
+}
+.t-item{position:relative}
+.t-dot{
+  position:absolute;left:-1rem;top:.32rem;
+  width:.55rem;height:.55rem;border-radius:50%;
+  background:var(--purple);border:1.5px solid var(--bg);
+}
+.t-item:nth-child(2n) .t-dot{background:var(--cyan)}
+.t-item:last-child .t-dot{background:var(--pink)}
+.t-label{font-size:.75rem;font-weight:500;color:var(--white);letter-spacing:.03em}
+.t-sub{font-size:.66rem;color:var(--muted)}
+
+/* ── DIFF CARDS ── */
+.diff-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:.55rem;flex:1;
+}
+.diff-card{
+  background:var(--s3);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:.75rem .85rem;
+  transition:border-color .2s;
+}
+.diff-card:hover{border-color:rgba(6,182,212,.45)}
+.diff-card:nth-child(2){border-color:var(--border2)}
+.diff-card:nth-child(3){border-color:rgba(236,72,153,.2)}
+.diff-emoji{font-size:1.1rem;margin-bottom:.3rem}
+.diff-title{font-size:.75rem;font-weight:500;color:var(--white);margin-bottom:.25rem}
+.diff-desc{font-size:.67rem;color:var(--muted);line-height:1.5}
+
+/* ── PROJECTS ── */
+.proj-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:.55rem;flex:1;
+}
+.proj-card{
+  background:var(--s2);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:.75rem .85rem;
+  transition:all .2s;
+  position:relative;overflow:hidden;
+}
+.proj-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(139,92,246,.06),rgba(6,182,212,.04));
+  opacity:0;transition:opacity .2s;
+}
+.proj-card:hover::after{opacity:1}
+.proj-card:hover{border-color:rgba(139,92,246,.4);transform:translateY(-2px)}
+.proj-emoji{font-size:1.2rem;margin-bottom:.3rem}
+.proj-name{font-size:.78rem;font-weight:500;color:var(--cyan);margin-bottom:.15rem}
+.proj-desc{font-size:.66rem;color:var(--muted)}
+
+/* ── SKILLS ── */
+.skills-wrap{display:flex;flex-wrap:wrap;gap:.35rem}
+.pill{
+  background:var(--s3);
+  border:1px solid var(--border);
+  border-radius:99px;
+  padding:.22rem .7rem;
+  font-size:.67rem;color:var(--muted2);
+  transition:all .18s;cursor:default;
+}
+.pill:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim)}
+.pill.hi{border-color:rgba(139,92,246,.45);color:var(--purple)}
+
+/* ── IDENTITY BLOCK ── */
+.identity{
+  background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(6,182,212,.07));
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:1rem 1.2rem;
+  flex-shrink:0;
+}
+.identity-title{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;color:var(--white);margin-bottom:.5rem;
+}
+.identity-title span{color:var(--cyan)}
+.identity-body{font-size:.7rem;color:var(--muted2);line-height:1.65}
+
+/* ── QUOTE ── */
+.quote-block{
+  text-align:center;
+  padding:.8rem 0 .4rem;
+  flex-shrink:0;
+}
+.quote-text{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:.9rem;
+  background:linear-gradient(135deg,var(--white),var(--purple),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1.5;margin-bottom:.35rem;
+}
+.quote-sub{font-size:.65rem;color:var(--muted);letter-spacing:.06em}
+.quote-sub span{color:var(--purple)}
+
+/* subtle animated bg dots */
+.bg-dots{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(circle,rgba(139,92,246,.04) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.screen{position:relative;z-index:1}
+</style>
+</head>
+<body>
+
+<div class="bg-dots"></div>
+
+<div class="screen">
+
+  <!-- ══ LEFT ══ -->
+  <div class="left">
+    <div class="avatar-wrap">
+      <div class="avatar-inner">EJ</div>
+    </div>
+
+    <div>
+      <div class="name">Ellah Jane<br>Mortel</div>
+    </div>
+
+    <div class="roles">
+      <span>Creative Thinker</span><br>
+      Problem Solver<br>
+      <span>Storyteller</span><br>
+      Creative Technologist
+    </div>
+
+    <div class="divider-h"></div>
+
+    <div class="facts">
+      <div class="fact"><span class="fact-icon">👤</span><div class="fact-text"><strong>21 years old</strong>Young &amp; driven</div></div>
+      <div class="fact"><span class="fact-icon">📍</span><div class="fact-text"><strong>Manibaug Paralaya, Porac</strong>Current location</div></div>
+      <div class="fact"><span class="fact-icon">🏝️</span><div class="fact-text"><strong>Romblon</strong>Island roots &amp; island pride</div></div>
+      <div class="fact"><span class="fact-icon">🎓</span><div class="fact-text"><strong>CS Student</strong>Computer Science</div></div>
+      <div class="fact"><span class="fact-icon">📝</span><div class="fact-text"><strong>HUMSS Graduate</strong>Humanities &amp; Social Sciences</div></div>
+      <div class="fact"><span class="fact-icon">💡</span><div class="fact-text"><strong>Creative Technologist</strong>Where ideas meet code</div></div>
+    </div>
+
+    <div class="divider-h"></div>
+
+    <div class="tagline-box">
+      <p>"Bridging creativity and technology to build meaningful digital experiences."</p>
+    </div>
+  </div>
+
+  <!-- ══ MIDDLE ══ -->
+  <div class="mid">
+
+    <div>
+      <div class="sec">My journey</div>
+      <div class="timeline">
+        <div class="t-item"><div class="t-dot"></div><div class="t-label">Romblon</div><div class="t-sub">Island beginnings, curious mind</div></div>
+        <div class="t-item"><div class="t-dot"></div><div class="t-label">HUMSS Student</div><div class="t-sub">Mastered communication, research &amp; storytelling</div></div>
+        <div class="t-item"><div class="t-dot"></div><div class="t-label">Discovered Technology</div><div class="t-sub">Found the bridge between words and code</div></div>
+        <div class="t-item"><div class="t-dot"></div><div class="t-label">Computer Science</div><div class="t-sub">Challenged and transformed by a new discipline</div></div>
+        <div class="t-item"><div class="t-dot"></div><div class="t-label">Web Development</div><div class="t-sub">Started building real digital experiences</div></div>
+        <div class="t-item"><div class="t-dot"></div><div class="t-label">Project Creation</div><div class="t-sub">Pawtection, WellNest &amp; more</div></div>
+        <div class="t-item"><div class="t-dot"></div><div class="t-label">Continuous Growth</div><div class="t-sub">Still going — and just getting started</div></div>
+      </div>
+    </div>
+
+    <div class="sec">What I could brong to the table</div>
+    <div class="diff-grid">
+        <div class="diff-card">
+        <div class="diff-emoji">🧠</div>
+        <div class="diff-title">Problem Solver</div>
+        <div class="diff-desc">I try to understand problems deeply and look for practical and creative solutions.</div>
+        </div>
+
+        <div class="diff-card">
+        <div class="diff-emoji">🔄</div>
+        <div class="diff-title">Versatile Learner</div>
+        <div class="diff-desc">I explore different areas like web development, research writing, and design.</div>
+        </div>
+
+        <div class="diff-card">
+        <div class="diff-emoji">🔍</div>
+        <div class="diff-title">Detail-Oriented</div>
+        <div class="diff-desc">I pay attention to small details to improve the quality of my work.</div>
+        </div>
+
+        <div class="diff-card">
+        <div class="diff-emoji">💬</div>
+        <div class="diff-title">Good Communicator</div>
+        <div class="diff-desc">My background helps me explain ideas clearly and work well with others.</div>
+        </div>
+            </div>
+
+  </div>
+
+  <!-- ══ RIGHT ══ -->
+  <div class="right">
+
+    <div class="sec">Project showcase</div>
+    <div class="proj-grid">
+      <div class="proj-card"><div class="proj-emoji">🐾</div><div class="proj-name">Pawtection</div><div class="proj-desc">Veterinary Clinic Management System</div></div>
+      <div class="proj-card"><div class="proj-emoji">🌿</div><div class="proj-name">WellNest</div><div class="proj-desc">Counseling Appointment Platform</div></div>
+      <div class="proj-card"><div class="proj-emoji">💻</div><div class="proj-name">Portfolio Websites</div><div class="proj-desc">Personal &amp; professional web projects</div></div>
+      <div class="proj-card"><div class="proj-emoji">🎨</div><div class="proj-name">Creative Works</div><div class="proj-desc">Film scripts, branding, presentations &amp; visual design</div></div>
+    </div>
+
+    <div class="sec">Skills &amp; strengths</div>
+    <div class="skills-wrap">
+
+  <!-- CORE SKILLS (highlighted) -->
+  <span class="pill hi">Research Writing</span>
+  <span class="pill hi">Documentation</span>
+  <span class="pill hi">Communication</span>
+  <span class="pill hi">Storytelling</span>
+  <span class="pill hi">Branding</span>
+  <span class="pill hi">Teamwork</span>
+  <span class="pill hi">Canva</span>
+
+  <!-- SUPPORT SKILLS -->
+  <span class="pill">HTML</span>
+  <span class="pill">CSS</span>
+  <span class="pill">JavaScript</span>
+  <span class="pill">UI/UX Design</span>
+  <span class="pill">Web Development</span>
+
+</div>
+
+    <div class="identity">
+      <div class="identity-title">I don't fit into <span>one box.</span></div>
+      <div class="identity-body">I thrive at the intersection of creativity and technology. While many choose between technical expertise and creative expression, I embrace both. My journey taught me that innovation happens when logic meets imagination — and every challenge is an opportunity to create something meaningful.</div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-text">"My story is proof that where you start does not determine where you can go."</div>
+      <div class="quote-sub">From <span>HUMSS</span> to Computer Science &nbsp;·&nbsp; From ideas to innovation.</div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>
